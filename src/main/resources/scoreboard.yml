@@ -1,0 +1,11 @@
+SCOREBOARD-TITLE: "&4Aura &7| &fHub"
+SCOREBOARD:
+  NORMAL:
+    - ""
+    - "&4&lOnline:"
+    - "&f%online_players%"
+    - ""
+    - "&4&lRank:"
+    - "&f%rank%"
+    - ""
+    - "&7&oauradevelopment.studio"

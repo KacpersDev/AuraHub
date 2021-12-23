@@ -1,0 +1,4 @@
+name: Hub
+version: '${project.version}'
+main: studio.auradevelopment.Hub
+api-version: 1.18
