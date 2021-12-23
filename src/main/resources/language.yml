@@ -1,0 +1,5 @@
+SETSPAWN: "&aYou have set spawn for server."
+SPAWN: "&aYou have been teleported to spawn."
+BUILDMODE:
+  ENABLED: "&aYou have enabled BuildMode"
+  DISABLED: "&cYou have disabled BuildMode"

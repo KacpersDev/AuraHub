@@ -1,7 +1,76 @@
 JOIN-MESSAGE:
+  - "&f&m---------------------------"
   - ""
+  - "&fWelcome to &4Aura &fNetwork"
   - ""
-  - ""
+  - "&f&m---------------------------"
 
 JOIN:
   SPEED: 3
+
+SPAWN: #/SETSPAWN
+  X:
+  Y:
+  Z:
+
+ITEMS:
+  SELECTOR:
+    ENABLED: true
+    ITEM: "COMPASS"
+    NAME: "&7Server Selector"
+    LORE:
+      - ""
+      - ""
+      - ""
+    SLOT: 0
+    AMOUNT: 1
+  ENDERBUTT:
+    ENABLED: true
+    ITEM: "ENDER_PEARL"
+    NAME: "&dEnderButt"
+    LORE:
+      - ""
+      - ""
+      - ""
+    SLOT: 1
+    AMOUNT: 1
+  VISIBLE:
+    ENABLED: true
+    ITEM: "INK_SACK"
+    NAME: "&7Hide/Show Players"
+    LORE:
+      - ""
+      - ""
+      - ""
+    SLOT: 2
+    AMOUNT: 1
+  INFORMATION:
+    ENABLED: true
+    ITEM: "BOOK"
+    NAME: "&eServer Information"
+    LORE:
+      - ""
+      - ""
+      - ""
+    SLOT: 3
+    AMOUNT: 1
+  LOBBY:
+    ENABLED: true
+    ITEM: "NETHER_STAR"
+    NAME: "&fHub Selector"
+    LORE:
+      - ""
+      - ""
+      - ""
+    SLOT: 4
+    AMOUNT: 1
+  COSMETIC:
+    ENABLED: true
+    ITEM: "ENDER_CHEST"
+    NAME: "&6Cosmetics"
+    LORE:
+      - ""
+      - ""
+      - ""
+    SLOT: 5
+    AMOUNT: 1

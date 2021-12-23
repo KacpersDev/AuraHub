@@ -8,13 +8,17 @@ import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 import org.bukkit.scheduler.BukkitRunnable;
 import studio.auradevelopment.board.ScoreboardManager;
 import studio.auradevelopment.board.reflection.BoardListener;
+import studio.auradevelopment.command.SetSpawnCommand;
+import studio.auradevelopment.command.SpawnCommand;
 import studio.auradevelopment.config.Config;
+import studio.auradevelopment.listener.*;
 
 import java.io.File;
 import java.util.HashMap;
@@ -29,6 +33,10 @@ public final class Hub extends JavaPlugin implements PluginMessageListener {
     public FileConfiguration configuration = new YamlConfiguration();
     public File scoreboard = new File(getDataFolder(),"scoreboard.yml");
     public FileConfiguration scoreboardConfiguration = new YamlConfiguration();
+    public File language = new File(getDataFolder(), "language.yml");
+    public FileConfiguration languageConfiguration = new YamlConfiguration();
+    public File inventories = new File(getDataFolder(), "inventories.yml");
+    public FileConfiguration inventoriesConfiguration = new YamlConfiguration();
 
 
     @Override
@@ -37,6 +45,9 @@ public final class Hub extends JavaPlugin implements PluginMessageListener {
         setupChat();
         loadConfigs();
         this.playerCount = new HashMap<>();
+        this.bungeecord();
+        command();
+        listener();
         board();
     }
 
@@ -47,6 +58,10 @@ public final class Hub extends JavaPlugin implements PluginMessageListener {
     public FileConfiguration getScoreboard() {
         return scoreboardConfiguration;
     }
+
+    public FileConfiguration getInventories(){return inventoriesConfiguration; }
+
+    public FileConfiguration getLanguage(){ return this.languageConfiguration; }
 
     public static Hub getInstance() {
         return instance;
@@ -62,11 +77,30 @@ public final class Hub extends JavaPlugin implements PluginMessageListener {
         new ScoreboardManager(this, new BoardListener(this));
     }
 
+    private void command(){
+        getCommand("setspawn").setExecutor(new SetSpawnCommand(this));
+        getCommand("spawn").setExecutor(new SpawnCommand(this));
+    }
+
+    private void listener(){
+
+        PluginManager manager = Bukkit.getPluginManager();
+        manager.registerEvents(new AuraJoinListener(this), this);
+        manager.registerEvents(new AuraEnderButt(this), this);
+        manager.registerEvents(new AuraJumpBoost(), this);
+        manager.registerEvents(new AuraDamageListener(this), this);
+        manager.registerEvents(new AuraFoodListener(), this);
+        manager.registerEvents(new AuraWeatherListener(), this);
+        manager.registerEvents(new AuraVoidListener(this), this);
+    }
+
     private void loadConfigs(){
 
         //config
         new Config(file, configuration, "config.yml");
         new Config(scoreboard, scoreboardConfiguration, "scoreboard.yml");
+        new Config(language, languageConfiguration, "language.yml");
+        new Config(inventories, inventoriesConfiguration, "inventories.yml");
     }
 
     private boolean setupChat() {
