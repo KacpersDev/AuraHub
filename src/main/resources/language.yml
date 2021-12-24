@@ -3,3 +3,6 @@ SPAWN: "&aYou have been teleported to spawn."
 BUILDMODE:
   ENABLED: "&aYou have enabled BuildMode"
   DISABLED: "&cYou have disabled BuildMode"
+VISIBILITY:
+  ENABLED: "&aPlayers visibility has been disabled"
+  DISABLED: "&cPlayers visibility has been enabled"

@@ -27,8 +27,8 @@ public class AuraSelectorListener implements Listener {
         Player player = event.getPlayer();
         Action action = event.getAction();
 
-        if (action.equals(Action.LEFT_CLICK_AIR) || action.equals(Action.LEFT_CLICK_BLOCK)) {
-            new InventoryManager(player, CC.toColor(getHub().getInventories().getString("INVENTORY.SELECTOR.TITLE")), getHub().getInventories().getInt("INVENTORY.SELECTOR.SIZE"));
-        }
+        if (!(action.equals(Action.LEFT_CLICK_AIR) || !action.equals(Action.LEFT_CLICK_BLOCK))) return;
+        if (!(player.getInventory().getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase(CC.toColor(getHub().getConfiguration().getString("ITEMS.SELECTOR.NAME"))))) return;
+        new InventoryManager(player, CC.toColor(getHub().getInventories().getString("INVENTORY.SELECTOR.TITLE")), getHub().getInventories().getInt("INVENTORY.SELECTOR.SIZE"));
     }
 }

@@ -1,4 +1,13 @@
 INVENTORY:
   SELECTOR:
-    TITLE: ""
+    TITLE: "&7Server Selector"
     SIZE: 36
+    ITEMS:
+      1:
+        ITEM: ""
+        NAME: ""
+        LORE:
+          - ""
+          - ""
+          - ""
+        SLOT: 1

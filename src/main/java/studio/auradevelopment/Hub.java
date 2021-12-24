@@ -15,6 +15,8 @@ import org.bukkit.plugin.messaging.PluginMessageListener;
 import org.bukkit.scheduler.BukkitRunnable;
 import studio.auradevelopment.board.ScoreboardManager;
 import studio.auradevelopment.board.reflection.BoardListener;
+import studio.auradevelopment.command.AuraHub;
+import studio.auradevelopment.command.BuildModeCommand;
 import studio.auradevelopment.command.SetSpawnCommand;
 import studio.auradevelopment.command.SpawnCommand;
 import studio.auradevelopment.config.Config;
@@ -80,6 +82,8 @@ public final class Hub extends JavaPlugin implements PluginMessageListener {
     private void command(){
         getCommand("setspawn").setExecutor(new SetSpawnCommand(this));
         getCommand("spawn").setExecutor(new SpawnCommand(this));
+        getCommand("buildmode").setExecutor(new BuildModeCommand(this));
+        getCommand("aurahub").setExecutor(new AuraHub());
     }
 
     private void listener(){
@@ -92,6 +96,9 @@ public final class Hub extends JavaPlugin implements PluginMessageListener {
         manager.registerEvents(new AuraFoodListener(), this);
         manager.registerEvents(new AuraWeatherListener(), this);
         manager.registerEvents(new AuraVoidListener(this), this);
+        manager.registerEvents(new AuraSelectorListener(this), this);
+        manager.registerEvents(new AuraAntiGriefListener(this),this);
+        manager.registerEvents(new AuraVisibilityListener(this), this);
     }
 
     private void loadConfigs(){
